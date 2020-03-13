@@ -1,0 +1,54 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PersonsViewer.GUI"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Name="MainWindow1" x:Class="PersonsViewer.GUI.MainWindow"
+        mc:Ignorable="d"
+        Title="Person Viewer" Height="600" Width="1000" Loaded="MainWindow1_Loaded">
+    <Grid>
+        <TabControl Margin="0,1,0,0">
+            <TabItem Header="Список сотрудников" IsSelected="True">
+                <Grid Background="#FFE5E5E5">
+                    <DockPanel Height="70" LastChildFill="False" Margin="0,1,0,0" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}">
+                        <Label Content="Статус: " VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                        <ComboBox x:Name="statusBox" Height="26" VerticalAlignment="Top" Width="121" HorizontalAlignment="Left" Margin="5,10,0,0"/>
+                        <Label Content="Отдел: " VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                        <ComboBox x:Name="departmentBox" Height="26" VerticalAlignment="Top" Width="121" HorizontalAlignment="Left" Margin="5,10,0,0"/>
+                        <Label Content="Должность: " VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                        <ComboBox x:Name="postBox" Height="26" VerticalAlignment="Top" Width="121" HorizontalAlignment="Left" Margin="5,10,0,0"/>
+                        <Label Content="Фамилия (часть фамилии): " VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                        <TextBox x:Name="lastNameBox" Height="26" VerticalAlignment="Top" Width="150" HorizontalAlignment="Left" Margin="5,10,0,0" MaxLength="100" />
+                        <Button x:Name="filterButton" Content="Показать" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="11,13,0,0" IsDefault="True" Click="filterButton_Click"/>
+                    </DockPanel>
+                    <DataGrid x:Name="peopleDataGrid" Margin="0,74,0,0" HorizontalAlignment="Left" SelectionChanged="peopleDataGrid_SelectionChanged" CanUserReorderColumns="False" IsReadOnly="True" IsManipulationEnabled="True" VerticalAlignment="Top" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Статистика">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <DockPanel LastChildFill="False" Margin="0" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}">
+                        <Label Content="Количество сотрудников статуса:  " VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                        <ComboBox x:Name="statusBox2" Height="26" VerticalAlignment="Top" Width="121" HorizontalAlignment="Left" Margin="5,10,0,0"/>
+                        <ComboBox x:Name="isEmploedBox" Height="26" VerticalAlignment="Top" Width="145" HorizontalAlignment="Left" Margin="5,10,0,0" SelectedIndex="0">
+                            <ListBoxItem x:Name="isEmploedBoxItem" Content="принятых на работу" />
+                            <ListBoxItem Content="уволенных" />
+                        </ComboBox>
+                        <Label Content="c" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                        <TextBox x:Name="startDateBox" Height="26" VerticalAlignment="Top" Width="130" HorizontalAlignment="Left" Margin="5,10,0,0" MaxLength="100" />
+                        <Label Content="по" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                        <TextBox x:Name="endDateBox" Height="26" VerticalAlignment="Top" Width="130" HorizontalAlignment="Left" Margin="5,10,0,0" MaxLength="100" />
+                        <Button x:Name="statisticButton" Content="Показать" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="11,13,0,0" IsDefault="True" Click="statisticButton_Click"/>
+                    </DockPanel>
+                    <DataGrid x:Name="statisticDataGrid" HorizontalAlignment="Left" Margin="0" Grid.Row="1" VerticalAlignment="Top"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
